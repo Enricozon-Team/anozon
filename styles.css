@@ -3,14 +3,16 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #121212; /* Sfondo scuro per esaltare la scia */
+    color: white;
 }
 
 header {
-    background-color: #34495e;
+    background-color: #1f1f1f;
     color: white;
     padding: 20px;
     text-align: center;
+    font-size: 24px;
 }
 
 .shop {
@@ -23,49 +25,91 @@ header {
     gap: 20px;
 }
 
+/* Stile per il prodotto */
 .product-card {
-    background-color: white;
+    background-color: #1e1e1e;
     border-radius: 10px;
     padding: 20px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.product-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.product-card img {
-    max-width: 100%;
-    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    color: white;
+    text-decoration: none;
     transition: transform 0.3s ease-in-out;
 }
 
-.product-card img:hover {
-    transform: rotate(5deg);
+.product-card:hover {
+    transform: translateY(-5px);
 }
 
-button {
-    background-color: #2ecc71;
-    color: white;
-    padding: 10px 20px;
-    border: none;
+/* Scia luminosa */
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    z-index: 1;
+    pointer-events: none;
+    box-sizing: border-box;
+    animation: neon-scia 2s linear infinite;
+}
+
+/* Animazione della scia luminosa */
+@keyframes neon-scia {
+    0% {
+        box-shadow: 0 0 10px 2px rgba(0, 240, 255, 0), 
+                    inset 0 0 10px 2px rgba(0, 240, 255, 0);
+        border-left: 2px solid rgba(0, 240, 255, 0.5);
+        border-top: 2px solid rgba(0, 240, 255, 0);
+        border-right: 2px solid rgba(0, 240, 255, 0);
+        border-bottom: 2px solid rgba(0, 240, 255, 0);
+    }
+    25% {
+        border-left: 2px solid rgba(0, 240, 255, 1);
+        border-top: 2px solid rgba(0, 240, 255, 0.5);
+        border-right: 2px solid rgba(0, 240, 255, 0);
+        border-bottom: 2px solid rgba(0, 240, 255, 0);
+    }
+    50% {
+        border-left: 2px solid rgba(0, 240, 255, 1);
+        border-top: 2px solid rgba(0, 240, 255, 1);
+        border-right: 2px solid rgba(0, 240, 255, 0.5);
+        border-bottom: 2px solid rgba(0, 240, 255, 0);
+    }
+    75% {
+        border-left: 2px solid rgba(0, 240, 255, 1);
+        border-top: 2px solid rgba(0, 240, 255, 1);
+        border-right: 2px solid rgba(0, 240, 255, 1);
+        border-bottom: 2px solid rgba(0, 240, 255, 0.5);
+    }
+    100% {
+        border-left: 2px solid rgba(0, 240, 255, 1);
+        border-top: 2px solid rgba(0, 240, 255, 1);
+        border-right: 2px solid rgba(0, 240, 255, 1);
+        border-bottom: 2px solid rgba(0, 240, 255, 1);
+    }
+}
+
+/* Stile per l'immagine del prodotto */
+.product-card img {
+    max-width: 100%;
     border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    transition: filter 0.3s ease-in-out;
 }
 
-button:hover {
-    background-color: #27ae60;
+.product-card img:hover {
+    filter: brightness(1.2);
 }
 
 /* Footer */
 footer {
     text-align: center;
     padding: 10px;
-    background-color: #34495e;
+    background-color: #1f1f1f;
     color: white;
 }
 
@@ -75,4 +119,3 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 }
-

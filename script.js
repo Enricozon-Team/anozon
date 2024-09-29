@@ -1,11 +1,17 @@
 // Sample Products Data
 const products = [
-    { id: 1, name: "Product 1", description: "This is a great product.", image: "https://via.placeholder.com/300x400", link: "https://example.com/product1" },
+    { id: 1, name: "Adam", description: "$40", image: "immagini/adam.jpg", link: "https://example.com/product1" },
     { id: 2, name: "Product 2", description: "This is a fantastic product.", image: "https://via.placeholder.com/300x400", link: "https://example.com/product2" },
     { id: 3, name: "Product 3", description: "You'll love this product.", image: "https://via.placeholder.com/300x400", link: "https://example.com/product3" },
     { id: 4, name: "Product 4", description: "A must-have item.", image: "https://via.placeholder.com/300x400", link: "https://example.com/product4" },
-    { id: 5, name: "Product 5", description: "Highly recommended!", image: "https://via.placeholder.com/300x400", link: "https://example.com/product5" }
+    { id: 5, name: "Product 5", description: "Highly recommended!", image: "https://via.placeholder.com/300x400", link: "https://example.com/product5" },
+    { id: 6, name: "Adam", description: "$40", image: "immagini/adam.jpg", link: "https://example.com/product1" },
+    { id: 7, name: "Product 2", description: "This is a fantastic product.", image: "https://via.placeholder.com/300x400", link: "https://example.com/product2" },
+    { id: 8, name: "Product 3", description: "You'll love this product.", image: "https://via.placeholder.com/300x400", link: "https://example.com/product3" },
+    { id: 9, name: "Product 4", description: "A must-have item.", image: "https://via.placeholder.com/300x400", link: "https://example.com/product4" },
+    { id: 10, name: "Product 5", description: "Highly recommended!", image: "https://via.placeholder.com/300x400", link: "https://example.com/product5" },
 ];
+
 
 // Ensure product grid exists
 const productGrid = document.getElementById('product-grid');
@@ -31,7 +37,7 @@ if (!productGrid) {
     });
 
     // Animate products on load
-    gsap.fromTo(".product", {scale: 0}, {scale: 1, duration: 0.8, stagger: 0.2, ease: "elastic"});
+    gsap.fromTo(".product", {scale: 0}, {scale: 1, duration: 0.8, stagger: 0.2, ease: ""});
 }
 
 // Toggle mobile menu visibility with animation

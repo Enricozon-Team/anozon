@@ -1,102 +1,70 @@
-window.addEventListener('load', () => {
-    // GSAP animations for products
-    gsap.from('.product', {
-        duration: 1,
-        opacity: 0,
-        y: 50,
-        stagger: 0.2,
-        ease: 'power2.out',
-    });
+// Sample Products Data
+const products = [
+    { id: 1, name: "Product 1", description: "This is a great product.", image: "https://via.placeholder.com/300x400", link: "https://example.com/product1" },
+    { id: 2, name: "Product 2", description: "This is a fantastic product.", image: "https://via.placeholder.com/300x400", link: "https://example.com/product2" },
+    { id: 3, name: "Product 3", description: "You'll love this product.", image: "https://via.placeholder.com/300x400", link: "https://example.com/product3" },
+    { id: 4, name: "Product 4", description: "A must-have item.", image: "https://via.placeholder.com/300x400", link: "https://example.com/product4" },
+    { id: 5, name: "Product 5", description: "Highly recommended!", image: "https://via.placeholder.com/300x400", link: "https://example.com/product5" }
+];
 
-    // Animation on hover for products
-    document.querySelectorAll('.product').forEach(product => {
-        product.addEventListener('mouseenter', () => {
-            gsap.to(product, {
-                duration: 0.5,
-                scale: 1.05, 
-                ease: 'elastic.out(1, 0.3)',
-            });
-            gsap.to(product.querySelector('img'), {
-                duration: 0.5,
-                rotation: 5, 
-                ease: 'power1.out',
-            });
+// Ensure product grid exists
+const productGrid = document.getElementById('product-grid');
+if (!productGrid) {
+    console.error('Element with id "product-grid" not found!');
+} else {
+    // Load products into grid
+    products.forEach(product => {
+        const productDiv = document.createElement('div');
+        productDiv.classList.add('product');
+        productDiv.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <div class="product-name">${product.name}</div>
+            <div class="product-description">${product.description}</div>
+        `;
+
+        // Add event listener to handle click on product
+        productDiv.addEventListener('click', () => {
+            window.location.href = product.link;
         });
 
-        product.addEventListener('mouseleave', () => {
-            gsap.to(product, {
-                duration: 0.5,
-                scale: 1,
-                ease: 'elastic.out(1, 0.3)',
-            });
-            gsap.to(product.querySelector('img'), {
-                duration: 0.5,
-                rotation: 0,
-                ease: 'power1.out',
-            });
-        });
+        productGrid.appendChild(productDiv);
     });
 
-    // GSAP animation for navbar links
-    gsap.from('.nav-links li', {
-        duration: 1,
-        opacity: 0,
-        y: -20,
-        stagger: 0.1,
-        ease: 'back.out(1.7)',
-    });
+    // Animate products on load
+    gsap.fromTo(".product", {scale: 0}, {scale: 1, duration: 0.8, stagger: 0.2, ease: "elastic"});
+}
 
-    // Dropdown animation on hover
-    document.querySelectorAll('.dropdown').forEach(dropdown => {
-        dropdown.addEventListener('mouseenter', () => {
-            gsap.fromTo(dropdown.querySelector('.dropdown-menu'), {
-                opacity: 0,
-                y: -10
-            }, {
-                opacity: 1,
-                y: 0,
-                duration: 0.3,
-                ease: 'power1.out'
-            });
-        });
+// Toggle mobile menu visibility with animation
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
 
-        dropdown.addEventListener('mouseleave', () => {
-            gsap.to(dropdown.querySelector('.dropdown-menu'), {
-                opacity: 0,
-                y: -10,
-                duration: 0.3,
-                ease: 'power1.out'
-            });
-        });
-    });
-
-    function filterProducts() {
-        var input, filter, container, images, description, i, txtValue;
-        input = document.getElementById("search");
-        filter = input.value.toUpperCase();
-        container = document.getElementsByClassName("product")[0];
-        images = container.getElementsByClassName("h2");
-      
-        for (i = 0; i < images.length; i++) {
-          description = images[i].getElementsByClassName("p")[0];
-          txtValue = description.textContent || description.innerText;
-      
-          if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            images[i].style.display = "";
-          } else {
-            images[i].style.display = "none";
-          }
-        }
-      }
-
-    // Event listeners for search functionality
-    searchButton.addEventListener('click', () => {
-        const searchTerm = searchInput.value.toLowerCase();
-        filterProducts(searchTerm);
-    });
-
-    searchInput.addEventListener('input', () => {
-        const searchTerm = searchInput.value.toLowerCase();
-        filterProducts(searchTerm);
-    });
+menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active'); // Add or remove the "active" class to animate
 });
+
+// Search functionality
+function searchProduct() {
+    const searchInput = document.getElementById('search-input').value.toLowerCase();
+    const filteredProducts = products.filter(product => product.name.toLowerCase().includes(searchInput));
+    
+    productGrid.innerHTML = ''; // Clear current products
+    filteredProducts.forEach(product => {
+        const productDiv = document.createElement('div');
+        productDiv.classList.add('product');
+        productDiv.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <div class="product-name">${product.name}</div>
+            <div class="product-description">${product.description}</div>
+        `;
+
+        // Add event listener for redirection
+        productDiv.addEventListener('click', () => {
+            window.location.href = product.link;
+        });
+
+        productGrid.appendChild(productDiv);
+    });
+
+    // Reanimate filtered products
+    gsap.fromTo(".product", {scale: 0}, {scale: 1, duration: 0.8, stagger: 0.2, ease: "elastic"});
+}

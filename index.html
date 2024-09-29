@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="https://via.placeholder.com/100x50" alt="Logo">
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search products..." />
+            <button id="search-btn">Search</button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li class="dropdown">
+                <a href="#products" class="dropdown-toggle">Products</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#product1">Product 1</a></li>
+                    <li><a href="#product2">Product 2</a></li>
+                    <li><a href="#product3">Product 3</a></li>
+                </ul>
+            </li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="product-container" id="product-list">
+        <div class="product">
+            <img src="https://via.placeholder.com/300" alt="Product 1">
+            <h2>Product 1</h2>
+            <p>$10.00</p>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/300" alt="Product 2">
+            <h2>Product 2</h2>
+            <p>$15.00</p>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/300" alt="Product 3">
+            <h2>Product 3</h2>
+            <p>$20.00</p>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/300" alt="Product 4">
+            <h2>Product 4</h2>
+            <p>$25.00</p>
+        </div>
+        <div class="product">
+            <img src="https://via.placeholder.com/300" alt="Product 5">
+            <h2>Product 5</h2>
+            <p>$30.00</p>
+        </div>
+    </main>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
+

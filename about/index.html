@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <link rel="icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Anozon</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px; 
+        }
+        .image {
+            flex: 1;
+            padding: 1px;
+            text-align: center; 
+        }
+        .image img {
+            max-width: 100%;
+            height: auto;
+            width: 40%; 
+        }
+        .content {
+            flex: 1;
+            padding: 1px;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+        .text {
+            font-size: 16px;
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="/immagini/loghi/enricozon.png" alt="Logo" width="95"> <!-- DA CAMBIARE -->
+        </div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="#">Products</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#">Home</a>
+        <a href="#">Products</a>
+        <a href="about/index.html">About</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <div class="container">
+        <div class="image">
+            <img src="logo.png" alt="Logo Anozon">
+        </div>
+        <div class="content">
+            <div class="title">About Us</div>
+            <p class="text">
+                cranci, enribocco, Tanoshi, Cholito & TheProcionCatIta. Noi siamo i creatori di Anozon. <br>
+                Qui potrai trovare molte cose e persone, ovviamente create/aggiunte per gioco. <br>
+                Il sito è interamente creato con HTML, CSS e JS, con design e loghi di Tanoshi. <br>
+            </p>
+        </div>
+    </div>
+    <script>
+        // Toggle mobile menu visibility with animation
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+             mobileMenu.classList.toggle('active'); // Add or remove the "active" class to animate
+        });
+    </script>   
+</body>
+</html>
